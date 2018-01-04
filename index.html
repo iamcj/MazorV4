@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Mazor"/>
+
+	<title>Mazor</title>
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvL2k6CAZsw17rXuYWtryOXwkeejq8UWY&callback=init" type="text/javascript"></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css' rel='stylesheet' />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="Mazor.js"></script>
+	<script src="https://smtpjs.com/v2/smtp.js"></script>
+	<link rel="stylesheet" href="Mazor.css" />
+
+</head>
+  <body bgcolor=white>
+
+	<div id="MazorDeActivated" class="default">
+		<svg class="MazorCircle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<circle cx="45" cy="45" r="9" />
+		<circle cx="45" cy="45" r="27" />
+		<circle cx="45" cy="45" r="45" />
+		</svg>
+	</div>
+  
+	<div id="CursorBall" class="default">
+		<svg class = "CursorBall" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<circle cx="10" cy="10" r="9" />
+		</svg>
+	</div>
+	<div id="InnerCircle" class="default">
+		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<path d="M0,36 A45,45 0 1,1 0,56" stroke-width="1.5" style="stroke:var(--MazorColor); fill:none;"/>
+			
+		</svg>
+	</div>
+	<div id="OuterCircle" class="default">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<path d="M19,36 A27,27 0 1,1 19,56" stroke-width="1.5" style="stroke:var(--MazorColor); fill:none;"/>
+		</svg>
+	</div>
+	
+	<div id="Close" class="default"></div>
+	
+	<div id="MagnifyingGlass" class="default Icon">
+		<svg class = "MagnifyingGlass" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<circle cx="9" cy="9" r="9" />
+		</svg>
+		<div id="ZoomHolder" class="default Icon ZoomHolderOblique"></div>
+		<div id="ActivatedZoomImage" class="default IconImage">
+			<img id="ActivatedZoomImage1515" src="TwoWayIcon.png"></img>
+		</div>
+	</div>
+	
+	<div id="PanIcon" class="default Icon">
+		<svg class = "PanIcon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<circle cx="9" cy="9" r="9" />
+		</svg>
+		<div id="PanIconImage" class="default IconImage">
+			<img id="PanIconImage1515" src="PanIcon1515.png"></img>
+		</div>
+	</div>
+	
+	<div id="Task">
+		<span id="TaskText" >Oefenen: <br>zoek bijvoorbeeld een vliegveld bij Jakarta of een moskee op Bali.
+		<div class='spacer'></div><div class='Button' onclick='mazorManager.success()'>Ik ben klaar met oefenen</div></span>
+	</div>
+	
+	<div id="PanLine" class=" default " >
+		<div class="spacer"></div>
+		<div id="PanLineDiv" class="default line" ></div>
+		<div class="spacer"></div>
+	</div>
+
+	<div id="Wrapper" style="zoom:100%">
+		<div id="Canvas" ></div>
+	</div>
+
+
+	
+  </body>
+</html>
