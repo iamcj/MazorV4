@@ -1,0 +1,240 @@
+html, body{
+    height: 100%;
+    width: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+:root {
+  --blue-color: rgb(47, 85, 151);
+  --purple-color: rgb(156, 12, 115);
+  --lightPurple-color: rgb(236, 226, 234);
+  --green-color: rgb(84, 130, 53);
+  --grey-color: grey;
+  --cursorBorder-color: var(--grey-color);
+  --cursorFill-color: var(--blue-color);
+  --white-color: white;
+  --ZoomColor: var(--blue-color);
+  --ZoomFillColor: var(--white-color);
+  --PanColor: var(--blue-color);
+  --PanFillColor: var(--white-color);
+  --MazorColor: var(--blue-color);
+  --TextButtonColor: red;
+}
+
+.default {
+	z-index: 3;
+	position:absolute;
+	visibility:hidden;
+	pointer-events:none; 	
+}
+
+#Wrapper{
+	margin-bottom: 41px;
+	margin-right: 19px;
+}
+
+#Canvas {
+	position:absolute;
+	z-index: 1;
+	height: 98%;
+    width: 99%;
+	border: 1px solid  #4F81BD;
+  }
+ 
+ 
+ /* Deactivated */
+ #MazorDeActivated  {
+	  width: 92px;
+	  height: 92px;
+  }
+ 
+ svg.MazorCircle {
+	stroke: grey;
+	stroke-width:1px;
+	fill:transparent;
+	padding-left:1px;
+	padding-top:1px;
+	width: 92px;
+	height: 92px;
+	pointer-events:none; 
+  }
+  
+/* Activated */
+ #CursorBall  {
+	 z-index:4;
+
+  }
+ 
+  svg.CursorBall {
+	stroke: var(--cursorBorder-color);
+	stroke-width:1px;
+	fill:var(--cursorFill-color);
+	padding-left:1px;
+	padding-top:1px;
+	width: 20px;
+	height: 20px;
+	pointer-events:none; 
+  }
+  
+#InnerCircle {
+	width: 88px;
+	height: 92px;
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+	transform: rotate(90deg);
+  }
+  
+#OuterCircle {
+	width: 88px;	
+	height: 92px;
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+	transform: rotate(90deg);
+  }
+  
+ /* Closer */ 
+#Close {
+	width: 13px;
+	height: 13px;
+}
+
+#Close:before, #Close:after {
+	position: absolute;
+	left: 5px;
+	content: ' ';
+	height: 13px;
+	width: 2px;
+	background-color: #333;
+}
+#Close:before {
+	transform: rotate(45deg);
+}
+#Close:after {
+	transform: rotate(-45deg);
+}
+
+svg.MagnifyingGlass {
+	stroke: var(--ZoomColor);
+	stroke-width:1.5px;
+	fill:var(--ZoomFillColor);
+	padding-left:1px;
+	padding-top:1px;
+	width: 20px;
+	height: 20px;
+	pointer-events:none; 
+  }
+
+.ZoomHolderOblique {
+	position: absolute;
+	left: -5px;
+	top: 12px;
+	content: ' ';
+	height: 13px;
+	width: 4px;
+	background-color: var(--ZoomColor);
+	transform: rotate(55deg);
+}
+
+.ZoomHolderStraight {
+	position: absolute;
+	left: -14px;
+	top: 9px;
+	content: ' ';
+	height: 4px;
+	width: 15px;
+	background-color: var(--ZoomColor);
+}
+
+.Icon{
+	z-index:4;
+}
+
+svg.PanIcon {
+	stroke: var(--PanColor);
+	stroke-width:1.5px;
+	fill: var(--PanFillColor);
+	padding-left:1px;
+	padding-top:1px;
+	width: 20px;
+	height: 20px;
+	pointer-events:none; 
+  }
+
+.IconImage {
+	left:3px;
+	top:3px;
+	transform: rotate(90deg);
+}
+
+.IconImage img {
+	width:14px;
+	height:14px;
+}	
+
+.line {
+  width: 100%;
+  color: var(--PanColor);
+  height: 1px;
+  background-color: var(--PanColor);
+}
+
+.spacer {
+  width: 7px;
+  height: 1px;
+}
+
+#Task {
+	z-index: 2;
+	position:absolute;
+	left: 15px;
+	top: 15px;
+	height: 185px;
+	width: 385px;
+	background-color: var(--TextButtonColor);
+	border: 1px solid grey;
+	border-radius: 5px;
+	display: table;
+	padding: 10px;
+	
+}
+#TaskText {
+	display: table-cell;
+	text-align: center;
+	color: white;
+	vertical-align: middle;
+	line-height: 175%;
+	font-family: arial;
+	  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Button {
+		border: 2px solid white;
+			color: red;
+			background-color: white;
+	border-radius: 5px;
+	padding:3px;
+	width: 370px;
+	
+}
+
+.Button:hover { 
+    font-weight: bold;
+}
+
+.Spacer {
+	height: 10px;
+	
+}
+
+.mapboxgl-canvas-container.mapboxgl-interactive,
+.mapboxgl-ctrl-nav-compass {
+    cursor: auto !important;
+}
+.mapboxgl-canvas-container.mapboxgl-interactive:active,
+.mapboxgl-ctrl-nav-compass:active {
+	cursor: auto !important;
+}
