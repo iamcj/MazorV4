@@ -3,6 +3,7 @@
 var mazorManager;
 var disable=false;
 var mouseLatLng;
+var drag = false;
 
 //settings
 var timeOutms = 400;
@@ -35,6 +36,7 @@ function Mouse(){
 	// To show mazor on first move
 	Mouse.prototype.init = function(){
 		document.addEventListener('mousemove', onMouseUpdateInit, false);
+		document.addEventListener('dragstart', onMouseDragStart, false);
 		if (disable) {
 			document.addEventListener('click', onMouseClickDisabled, false);
 			document.addEventListener('wheel', onWheel, false);
@@ -52,6 +54,10 @@ function Mouse(){
 		mazorManager.previousPosition= new Point(e.pageX, e.pageY);
 		document.removeEventListener('mousemove', onMouseUpdateInit, false);
 		document.addEventListener('mousemove', onMouseUpdate, false);
+	}
+	
+	function onMouseDragStart(e) {
+		drag = true;
 	}
 
 	// For the rest of the moving
@@ -78,9 +84,11 @@ function Mouse(){
 	function onMouseClick(e) {
 		mazorManager.addClick();
 		if (!inButtonArea(e.pageX,e.pageY)){
-			if (mazorManager.isMazorDeActivated()) {
+			if (mazorManager.isMazorDeActivated()&&!drag) {
 				mazorManager.checkToActivate(mazorManager.previousPosition);
+				
 			} else {
+				drag = false;
 				mazorManager.deActivateMazor(mazorManager.previousPosition);
 				// put mazor at the place of the mouse
 				mazorManager.updatePosition(mazorManager.previousPosition);
@@ -133,6 +141,12 @@ function Canvas(){
 		 
 		 this.map.on('mousemove', function (event) {
               mouseLatLng = event.lngLat;
+			//  mouseLatLng = new google.maps.LatLng(52.28958, 5.39524);
+
+          });
+		  
+		  this.map.on('dragstart', function (event) {
+              drag = true;
 			//  mouseLatLng = new google.maps.LatLng(52.28958, 5.39524);
 
           });
